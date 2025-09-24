@@ -1,0 +1,94 @@
+body.dark-mode {
+  --text-secondary: #aaa;
+  --text-muted: #bbb;
+}
+
+body.dark-mode .hamburger-line {
+  background-color: var(--text-dark);
+}
+
+body.dark-mode .nav-menu {
+  background-color: var(--bg-dark);
+}
+
+body.dark-mode .nav-menu .nav-link {
+  color: var(--text-dark);
+}
+
+body.dark-mode p,
+body.dark-mode .footer-links ul li a,
+body.dark-mode .portfolio-content p,
+body.dark-mode .schedule-platform,
+body.dark-mode .footer-about p,
+body.dark-mode .contact-detail {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .section-title p,
+body.dark-mode .footer-bottom {
+  color: var(--text-muted);
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .section-title h2,
+body.dark-mode .footer-title,
+body.dark-mode .schedule-day,
+body.dark-mode .portfolio-content h3 {
+  color: var(--text-dark);
+}
+
+body.dark-mode .form-control {
+  background-color: var(--card-dark);
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode .form-control:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(248, 178, 205, 0.1);
+}
+
+body.dark-mode .form-control::placeholder {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .form-label {
+  color: var(--text-dark);
+}
+
+body.dark-mode .portfolio-tag {
+  background-color: var(--border-dark);
+  color: var(--text-secondary);
+}
+
+body.dark-mode .schedule-title {
+  color: var(--pink);
+}
+
+body.dark-mode .schedule-time {
+  color: var(--blue);
+}
+
+body.dark-mode .schedule-item {
+  border-bottom-color: var(--border-dark);
+}
+
+body.dark-mode .footer-social-link {
+  background-color: var(--card-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode .portfolio-item:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .contact-form,
+body.dark-mode .schedule-container {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .contact-icon {
+  background-color: var(--card-dark);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
