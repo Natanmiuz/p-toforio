@@ -6,6 +6,7 @@
   "languages.english": "English",
   "languages.japanese": "Japanese",
   "languages.spanish": "Spanish",
+  "home.title": "Natanohj",
   "home.subtitle": "I build, I create, I share my world.",
   "content.title": "Content Creator",
   "content.subtitle": "Check out my latest content and follow me on social media!",
@@ -36,8 +37,8 @@
   "form.placeholders.message": "Type your message here...",
   "footer.quickLinks": "Quick Links",
   "footer.followMe": "Follow Me",
-  "footer.copyright": "© 2025 Natan. All rights reserved.",
+  "footer.copyright": "Natan. All rights reserved.",
   "footer.about": "About Natan",
-  "footer.aboutText": "~µ'sic Forever ~",
+  "footer.aboutText": "Programmer by day, content creator by night. I share my passion for technology, gaming, and creative content across multiple platforms.",
   "form.comingSoon": "The contact form will be available soon. Thank you for your patience!"
 }
