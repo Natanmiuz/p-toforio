@@ -113,7 +113,7 @@ Recibe `locale` y `t` como props:
 - Canonical por idioma: `/`, `/es/`, `/ja/` (absolutos con `https://natandev.com`).
 - `og:url` y `og:locale` (`en_US`, `es_ES`, `ja_JP`) por página.
 - `twitter:*`, keywords, favicon, JSON-LD y preconnects se mantienen estáticos.
-- Se usa `getRelativeLocaleUrl` de `astro:i18n` para las URLs hreflang/canonical cuando aporte; si no, literales.
+- Las URLs hreflang/canonical se construyen con literales (`/`, `/es/`, `/ja/` sobre `https://natandev.com`), por ser un sitio de un solo nivel sin `base`.
 
 ## Validación de keys (`scripts/check-i18n.mjs`)
 
