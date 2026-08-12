@@ -380,10 +380,6 @@ git commit -m "feat: divide script.js en modulos astro"
 ---
 import '../styles/style.css';
 import '../styles/dark-mode.css';
-import '../scripts/aos-init.js';
-import '../scripts/nav.js';
-import '../scripts/theme.js';
-import '../scripts/i18n.js';
 ---
 <!doctype html>
 <html lang="en">
@@ -450,12 +446,19 @@ import '../scripts/i18n.js';
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <slot />
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Ejecutado en Node al buildear: los scripts NO se importan en frontmatter.
+       Se referencian como <script src="../scripts/x.js"> (Astro los bundlea y los emite
+       como type="module" al final del body; corren tras el script clásico del CDN). -->
+  <script is:inline src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../scripts/aos-init.js"></script>
+  <script src="../scripts/nav.js"></script>
+  <script src="../scripts/theme.js"></script>
+  <script src="../scripts/i18n.js"></script>
 </body>
 </html>
 ```
 
-Notas: el meta `apple-touch-icon` se omite (arreglo aprobado). El script CDN de AOS es clásico (se ejecuta durante el parseo, antes que los módulos bundled → `AOS.init` en `aos-init.js` siempre encuentra el global).
+Notas: el meta `apple-touch-icon` se omite (arreglo aprobado). OJO con los scripts (lección de esta ejecución): los imports JS del frontmatter se ejecutarían en Node y reventarían el build (`AOS is not defined`, `document` no existe). Los scripts propios se referencian como `<script src="../scripts/*.js">` (Astro los bundlea como `type="module"` al final del body); el CDN clásico de AOS lleva `is:inline` para que Astro lo emita verbatim sin transformarlo a un import de módulo. Orden resultante en `dist/`: CDN clásico → módulos bundled (AOS.init encuentra el global).
 
 - [ ] **Step 2: Sustituir el shell en `src/pages/index.astro`**
 
