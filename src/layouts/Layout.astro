@@ -1,0 +1,76 @@
+---
+import '../styles/style.css';
+import '../styles/dark-mode.css';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Natanohj - Content Creator & Programmer | Gaming, Tech, and Creative Content</title>
+  <meta name="description" content="Natanohj is a content creator and programmer sharing passion for technology, gaming, and creative content. Join me for tutorials, coding projects, and entertainment.">
+  <meta name="keywords" content="content creator, programmer, gaming content, tech tutorials, coding projects, YouTube creator, streaming">
+  <meta name="author" content="Natan">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Natanohj - Content Creator & Programmer">
+  <meta property="og:description" content="Join me for gaming content, tech tutorials, and creative programming projects.">
+  <meta property="og:url" content="https://natandev.com">
+  <meta property="og:image" content="https://natandev.com/assets/images/og-image.jpg">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@natanohj_9">
+  <meta name="twitter:creator" content="@natanohj_9">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/favi.ico" type="image/x-icon">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://natandev.com">
+
+  <!-- Preload Critical Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Stylesheets (CDNs) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Natanohj",
+      "url": "https://natandev.com",
+      "sameAs": [
+        "https://youtube.com/@natanyume",
+        "https://www.tiktok.com/@natan.kimito",
+        "https://x.com/natanohj_9",
+        "https://www.instagram.com/natansolano_",
+        "https://github.com/Natanmiuz"
+      ],
+      "jobTitle": "Content Creator and Programmer",
+      "description": "Content creator and programmer sharing passion for technology, gaming, and creative content.",
+      "knowsAbout": ["Programming", "Content Creation", "Gaming", "Technology"],
+      "email": "contact@natandev.com"
+    }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <slot />
+  <script is:inline src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../scripts/aos-init.js"></script>
+  <script src="../scripts/nav.js"></script>
+  <script src="../scripts/theme.js"></script>
+  <script src="../scripts/i18n.js"></script>
+</body>
+</html>
