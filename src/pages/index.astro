@@ -6,14 +6,18 @@ import ContentCreator from '../components/ContentCreator.astro';
 import Programmer from '../components/Programmer.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import { translations, defaultLocale } from '../i18n';
+
+const locale = defaultLocale;
+const t = translations[locale];
 ---
-<Layout>
-  <Header />
+<Layout locale={locale} t={t}>
+  <Header t={t} locale={locale} />
   <main id="main-content">
-    <Hero />
-    <ContentCreator />
-    <Programmer />
-    <Contact />
+    <Hero t={t} />
+    <ContentCreator t={t} />
+    <Programmer t={t} />
+    <Contact t={t} />
   </main>
-  <Footer />
+  <Footer t={t} />
 </Layout>
