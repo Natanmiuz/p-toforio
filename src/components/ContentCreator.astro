@@ -1,12 +1,21 @@
+---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+---
 <section class="section" id="content-creator">
   <div class="container">
     <div class="section-title" data-aos="fade-up">
-      <h2 data-translate="content.title">Content Creator</h2>
-      <p data-translate="content.subtitle">Check out my latest content and follow me on social media!</p>
+      <h2>{t['content.title']}</h2>
+      <p>{t['content.subtitle']}</p>
     </div>
 
     <div class="latest-content" data-aos="fade-up">
-      <h3 class="content-title" data-translate="content.latestVideos">Latest Videos</h3>
+      <h3 class="content-title">{t['content.latestVideos']}</h3>
       <div class="video-container">
         <iframe
           src="https://www.youtube.com/embed/1g3joMapdIY?si=ewlfwWeu5GE8j4-H"

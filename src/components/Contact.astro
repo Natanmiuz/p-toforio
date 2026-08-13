@@ -1,57 +1,73 @@
+---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+---
 <section class="section" id="contact">
   <div class="container">
     <div class="section-title" data-aos="fade-up">
-      <h2 data-translate="contact.title">Let's Chat!</h2>
-      <p data-translate="contact.subtitle">Feel free to reach out if you want to talk, share ideas, or connect!</p>
+      <h2>{t['contact.title']}</h2>
+      <p>{t['contact.subtitle']}</p>
     </div>
 
     <div class="contact-container">
       <div class="contact-info" data-aos="fade-up">
-        <h3 data-translate="contact.connect">Say Hi!</h3>
-        <p data-translate="contact.message">I'd love to hear from you! Whether you want to chat about tech, share cool ideas, or just say hello - drop me a message and let's connect!</p>
+        <h3>{t['contact.connect']}</h3>
+        <p>{t['contact.message']}</p>
 
         <div class="contact-method">
           <div class="contact-icon">
             <i class="fas fa-envelope"></i>
           </div>
-          <a href="mailto:contact@natandev.com" class="contact-detail" data-translate="contact.email">You can email me anytime</a>
+          <a href="mailto:contact@natandev.com" class="contact-detail">{t['contact.email']}</a>
         </div>
 
         <div class="contact-method">
           <div class="contact-icon">
             <i class="fas fa-map-marker-alt"></i>
           </div>
-          <span class="contact-detail" data-translate="contact.location">Somewhere in the digital world 🌎</span>
+          <span class="contact-detail">{t['contact.location']}</span>
         </div>
 
         <div class="contact-method">
           <div class="contact-icon">
             <i class="fas fa-comments"></i>
           </div>
-          <span class="contact-detail" data-translate="contact.availability">Always open for a good chat!</span>
+          <span class="contact-detail">{t['contact.availability']}</span>
         </div>
       </div>
 
       <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
         <form id="contactForm">
           <div class="form-group">
-            <label for="name" class="form-label" data-translate="form.name">What should I call you?</label>
-            <input type="text" id="name" class="form-control" placeholder="" data-translate-placeholder="form.placeholders.name" required>
+            <label for="name" class="form-label">{t['form.name']}</label>
+            <input type="text" id="name" class="form-control" placeholder={t['form.placeholders.name']} required>
           </div>
 
           <div class="form-group">
-            <label for="email" class="form-label" data-translate="form.email">Where can I reach you?</label>
-            <input type="email" id="email" class="form-control" placeholder="" data-translate-placeholder="form.placeholders.email" required>
+            <label for="email" class="form-label">{t['form.email']}</label>
+            <input type="email" id="email" class="form-control" placeholder={t['form.placeholders.email']} required>
           </div>
 
           <div class="form-group">
-            <label for="message" class="form-label" data-translate="form.message">What's on your mind?</label>
-            <textarea id="message" class="form-control" placeholder="" data-translate-placeholder="form.placeholders.message" required></textarea>
+            <label for="message" class="form-label">{t['form.message']}</label>
+            <textarea id="message" class="form-control" placeholder={t['form.placeholders.message']} required></textarea>
           </div>
 
-          <button type="button" id="submitForm" class="btn btn-primary" data-translate="form.submit">Say Hello!</button>
+          <button type="button" id="submitForm" class="btn btn-primary">{t['form.submit']}</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script define:vars={{ comingSoon: t['form.comingSoon'] }}>
+  document.getElementById('submitForm')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert(comingSoon);
+  });
+</script>

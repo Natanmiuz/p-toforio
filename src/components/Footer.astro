@@ -1,25 +1,32 @@
 ---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
 const year = new Date().getFullYear();
 ---
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-container">
       <div class="footer-about">
-        <h4 class="footer-title" data-translate="footer.about">About Natan</h4>
-        <p data-translate="footer.aboutText">Programmer by day, content creator by night. I share my passion for technology, gaming, and creative content across multiple platforms.</p>
+        <h4 class="footer-title">{t['footer.about']}</h4>
+        <p>{t['footer.aboutText']}</p>
       </div>
       <div class="footer-links">
-        <h4 class="footer-title" data-translate="footer.quickLinks">Quick Links</h4>
+        <h4 class="footer-title">{t['footer.quickLinks']}</h4>
         <ul>
-          <li><a href="#hero"><i class="fas fa-chevron-right"></i> <span data-translate="nav.home">Home</span></a></li>
-          <li><a href="#content-creator"><i class="fas fa-chevron-right"></i> <span data-translate="nav.contentCreator">Content Creator</span></a></li>
-          <li><a href="#programmer"><i class="fas fa-chevron-right"></i> <span data-translate="nav.programmer">Programmer</span></a></li>
-          <li><a href="#contact"><i class="fas fa-chevron-right"></i> <span data-translate="nav.contact">Contact</span></a></li>
+          <li><a href="#hero"><i class="fas fa-chevron-right"></i> <span>{t['nav.home']}</span></a></li>
+          <li><a href="#content-creator"><i class="fas fa-chevron-right"></i> <span>{t['nav.contentCreator']}</span></a></li>
+          <li><a href="#programmer"><i class="fas fa-chevron-right"></i> <span>{t['nav.programmer']}</span></a></li>
+          <li><a href="#contact"><i class="fas fa-chevron-right"></i> <span>{t['nav.contact']}</span></a></li>
         </ul>
       </div>
 
       <div class="footer-social">
-        <h4 class="footer-title" data-translate="footer.followMe">Follow Me</h4>
+        <h4 class="footer-title">{t['footer.followMe']}</h4>
         <div class="footer-social-icons">
           <a href="https://www.tiktok.com/@natan.kimito" class="footer-social-link tiktok" aria-label="TikTok">
             <i class="fab fa-tiktok"></i>
@@ -47,7 +54,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {year} <span data-translate="footer.copyright">Natan. All rights reserved.</span></p>
+      <p>&copy; {year} <span>{t['footer.copyright']}</span></p>
     </div>
   </div>
 </footer>

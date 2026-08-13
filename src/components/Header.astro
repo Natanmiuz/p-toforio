@@ -1,3 +1,13 @@
+---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+  locale: string;
+}
+
+const { t, locale } = Astro.props;
+---
 <header>
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container">
@@ -7,19 +17,19 @@
 
       <div class="nav-center">
         <ul class="nav-menu" id="nav-menu">
-          <li class="nav-item"><a href="#hero" class="nav-link active" data-translate="nav.home">Home</a></li>
-          <li class="nav-item"><a href="#content-creator" class="nav-link" data-translate="nav.contentCreator">Content Creator</a></li>
-          <li class="nav-item"><a href="#programmer" class="nav-link" data-translate="nav.programmer">Programmer</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
+          <li class="nav-item"><a href="#hero" class="nav-link active">{t['nav.home']}</a></li>
+          <li class="nav-item"><a href="#content-creator" class="nav-link">{t['nav.contentCreator']}</a></li>
+          <li class="nav-item"><a href="#programmer" class="nav-link">{t['nav.programmer']}</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">{t['nav.contact']}</a></li>
         </ul>
       </div>
 
       <div class="nav-right">
         <div class="nav-controls">
           <select id="language-switcher">
-            <option value="en" data-translate="languages.english" selected>English</option>
-            <option value="ja" data-translate="languages.japanese">Japanese</option>
-            <option value="es" data-translate="languages.spanish">Spanish</option>
+            <option value="en" selected={locale === 'en'}>{t['languages.english']}</option>
+            <option value="ja" selected={locale === 'ja'}>{t['languages.japanese']}</option>
+            <option value="es" selected={locale === 'es'}>{t['languages.spanish']}</option>
           </select>
           <button id="theme-toggle" aria-label="Toggle Dark Mode">
             <i class="fas fa-moon"></i>
@@ -34,3 +44,11 @@
     </div>
   </nav>
 </header>
+
+<script>
+  const switcher = document.getElementById('language-switcher');
+  switcher?.addEventListener('change', (e) => {
+    const value = e.target.value;
+    location.href = value === 'en' ? '/' : '/' + value + '/';
+  });
+</script>
