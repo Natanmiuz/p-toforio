@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import ContentCreator from '../../components/ContentCreator.astro';
+import Programmer from '../../components/Programmer.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import { translations, locales, defaultLocale, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.filter((locale) => locale !== defaultLocale).map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const t = translations[locale] ?? translations.en;
+---
+<Layout locale={locale} t={t}>
+  <Header t={t} locale={locale} />
+  <main id="main-content">
+    <Hero t={t} />
+    <ContentCreator t={t} />
+    <Programmer t={t} />
+    <Contact t={t} />
+  </main>
+  <Footer t={t} />
+</Layout>

@@ -1,0 +1,54 @@
+---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+  locale: string;
+}
+
+const { t, locale } = Astro.props;
+---
+<header>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-left">
+        <a href="#hero" class="logo" aria-label="Natanohj homepage">Natanohj<span>.</span></a>
+      </div>
+
+      <div class="nav-center">
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item"><a href="#hero" class="nav-link active">{t['nav.home']}</a></li>
+          <li class="nav-item"><a href="#content-creator" class="nav-link">{t['nav.contentCreator']}</a></li>
+          <li class="nav-item"><a href="#programmer" class="nav-link">{t['nav.programmer']}</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">{t['nav.contact']}</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-controls">
+          <select id="language-switcher">
+            <option value="en" selected={locale === 'en'}>{t['languages.english']}</option>
+            <option value="ja" selected={locale === 'ja'}>{t['languages.japanese']}</option>
+            <option value="es" selected={locale === 'es'}>{t['languages.spanish']}</option>
+          </select>
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+        <button class="hamburger" id="hamburger">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const switcher = document.getElementById('language-switcher');
+  switcher?.addEventListener('change', (e) => {
+    const value = e.target.value;
+    location.href = value === 'en' ? '/' : '/' + value + '/';
+  });
+</script>

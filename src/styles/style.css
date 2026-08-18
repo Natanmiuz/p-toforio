@@ -962,3 +962,17 @@
         width: 100%;
       }
     }
+
+    .social-link.disabled,
+    .footer-social-link.disabled {
+      filter: grayscale(1);
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .social-link.disabled:hover,
+    .footer-social-link.disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+

@@ -1,0 +1,99 @@
+---
+import '../styles/style.css';
+import '../styles/dark-mode.css';
+import type { Translation } from '../i18n';
+
+interface Props {
+  locale: string;
+  t: Translation;
+}
+
+const { locale, t } = Astro.props;
+const BASE = 'https://natandev.com';
+const paths: Record<string, string> = { en: '/', es: '/es/', ja: '/ja/' };
+const canonical = BASE + (paths[locale] ?? '/');
+const ogLocales: Record<string, string> = { en: 'en_US', es: 'es_ES', ja: 'ja_JP' };
+const hreflangs = [
+  { code: 'en', url: `${BASE}/` },
+  { code: 'es', url: `${BASE}/es/` },
+  { code: 'ja', url: `${BASE}/ja/` },
+  { code: 'x-default', url: `${BASE}/` }
+];
+---
+<!doctype html>
+<html lang={locale}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>{t['seo.title']}</title>
+  <meta name="description" content={t['seo.description']}>
+  <meta name="keywords" content="content creator, programmer, gaming content, tech tutorials, coding projects, YouTube creator, streaming">
+  <meta name="author" content="Natan">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={t['seo.ogTitle']}>
+  <meta property="og:description" content={t['seo.ogDescription']}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:locale" content={ogLocales[locale] ?? 'en_US'}>
+  <meta property="og:image" content="https://natandev.com/assets/images/og-image.jpg">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@natanohj_9">
+  <meta name="twitter:creator" content="@natanohj_9">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/favi.ico" type="image/x-icon">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonical}>
+
+  <!-- Hreflang Alternates -->
+  {hreflangs.map(({ code, url }) => (
+    <link rel="alternate" hreflang={code} href={url} />
+  ))}
+
+  <!-- Preload Critical Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Stylesheets (CDNs) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Natanohj",
+      "url": "https://natandev.com",
+      "sameAs": [
+        "https://youtube.com/@natanyume",
+        "https://www.tiktok.com/@natan.kimito",
+        "https://x.com/natanohj_9",
+        "https://www.instagram.com/natansolano_",
+        "https://github.com/Natanmiuz"
+      ],
+      "jobTitle": "Content Creator and Programmer",
+      "description": "Content creator and programmer sharing passion for technology, gaming, and creative content.",
+      "knowsAbout": ["Programming", "Content Creation", "Gaming", "Technology"],
+      "email": "contact@natandev.com"
+    }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <slot />
+  <script is:inline src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../scripts/aos-init.js"></script>
+  <script src="../scripts/nav.js"></script>
+  <script src="../scripts/theme.js"></script>
+</body>
+</html>

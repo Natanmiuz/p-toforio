@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+npm-debug.log*
+testsprite_tests/
+docs/
+
+# AI tooling
+AGENTS.md
+.agents/
+skills-lock.json

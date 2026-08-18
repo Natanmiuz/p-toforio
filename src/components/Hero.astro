@@ -1,0 +1,26 @@
+---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+---
+<section class="hero" id="hero" aria-label="Hero section">
+  <div class="shapes" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 data-aos="fade-up">{t['home.title']}</h1>
+      <p data-aos="fade-up" data-aos-delay="200">{t['home.subtitle']}</p>
+      <div class="hero-buttons">
+        <a href="#content-creator" class="btn btn-primary" data-aos="fade-up" data-aos-delay="400">{t['nav.contentCreator']}</a>
+        <a href="#programmer" class="btn btn-secondary" data-aos="fade-up" data-aos-delay="600">{t['nav.programmer']}</a>
+      </div>
+    </div>
+  </div>
+</section>

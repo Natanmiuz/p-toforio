@@ -1,0 +1,38 @@
+---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+---
+<section class="section" id="programmer">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>{t['programmer.title']}</h2>
+      <p>{t['programmer.subtitle']}</p>
+    </div>
+
+    <div class="simple-content" data-aos="fade-up">
+      <p class="programmer-description">{t['programmer.description']}</p>
+
+      <div class="simple-projects" data-aos="fade-up">
+        <h3>{t['programmer.projects.title']}</h3>
+        <ul class="projects-list">
+          <li><span class="project-title">image-resizer</span> - <span>{t['programmer.projects.imageResizer']}</span></li>
+          <li><span class="project-title">AudioConvert</span> - <span>{t['programmer.projects.audioConvert']}</span></li>
+          <li><span class="project-title">VideoConvert</span> - <span>{t['programmer.projects.videoConvert']}</span></li>
+        </ul>
+      </div>
+
+      <div class="github-section" data-aos="fade-up">
+        <p>{t['programmer.github.message']}</p>
+        <a href="https://github.com/Natanmiuz" class="github-link" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+          <span>{t['programmer.github.profile']}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

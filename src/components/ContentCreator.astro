@@ -1,0 +1,61 @@
+---
+import type { Translation } from '../i18n';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+---
+<section class="section" id="content-creator">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>{t['content.title']}</h2>
+      <p>{t['content.subtitle']}</p>
+    </div>
+
+    <div class="latest-content" data-aos="fade-up">
+      <h3 class="content-title">{t['content.latestVideos']}</h3>
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/1g3joMapdIY?si=ewlfwWeu5GE8j4-H"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="social-links" data-aos="fade-up">
+      <a href="https://www.tiktok.com/@natan.kimito" class="social-link tiktok" target="_blank" rel="noopener">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+      <a href="https://youtube.com/@natanyume" class="social-link youtube" target="_blank" rel="noopener">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+      <a class="social-link facebook disabled" aria-disabled="true" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="https://x.com/natanohj_9" class="social-link twitter" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+        <span>Twitter/X</span>
+      </a>
+      <a href="https://www.instagram.com/natansolano_" class="social-link instagram" target="_blank" rel="noopener">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+      <a class="social-link twitch disabled" aria-disabled="true" rel="noopener">
+        <i class="fab fa-twitch"></i>
+        <span>Twitch</span>
+      </a>
+      <a class="social-link kick disabled" aria-disabled="true" rel="noopener">
+        <i class="fas fa-gamepad"></i>
+        <span>Kick</span>
+      </a>
+    </div>
+  </div>
+</section>
