@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://natandev.com',
+  site: 'https://Natanmiuz.github.io',
+  base: '/p-toforio/',
   i18n: {
     locales: ['en', 'es', 'ja'],
     defaultLocale: 'en',

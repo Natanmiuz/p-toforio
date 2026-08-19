@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { locale, t } = Astro.props;
-const BASE = 'https://natandev.com';
+const BASE = 'https://Natanmiuz.github.io/p-toforio';
 const paths: Record<string, string> = { en: '/', es: '/es/', ja: '/ja/' };
 const canonical = BASE + (paths[locale] ?? '/');
 const ogLocales: Record<string, string> = { en: 'en_US', es: 'es_ES', ja: 'ja_JP' };
@@ -39,7 +39,7 @@ const hreflangs = [
   <meta property="og:description" content={t['seo.ogDescription']}>
   <meta property="og:url" content={canonical}>
   <meta property="og:locale" content={ogLocales[locale] ?? 'en_US'}>
-  <meta property="og:image" content="https://natandev.com/assets/images/og-image.jpg">
+  <meta property="og:image" content={BASE + '/assets/images/og-image.jpg'}>
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -47,7 +47,7 @@ const hreflangs = [
   <meta name="twitter:creator" content="@natanohj_9">
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/images/favi.ico" type="image/x-icon">
+  <link rel="icon" href={import.meta.env.BASE_URL + 'assets/images/favi.ico'} type="image/x-icon">
 
   <!-- Canonical URL -->
   <link rel="canonical" href={canonical}>
@@ -68,25 +68,23 @@ const hreflangs = [
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 
   <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Natanohj",
-      "url": "https://natandev.com",
-      "sameAs": [
-        "https://youtube.com/@natanyume",
-        "https://www.tiktok.com/@natan.kimito",
-        "https://x.com/natanohj_9",
-        "https://www.instagram.com/natansolano_",
-        "https://github.com/Natanmiuz"
-      ],
-      "jobTitle": "Content Creator and Programmer",
-      "description": "Content creator and programmer sharing passion for technology, gaming, and creative content.",
-      "knowsAbout": ["Programming", "Content Creation", "Gaming", "Technology"],
-      "email": "contact@natandev.com"
-    }
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    'name': 'Natanohj',
+    'url': BASE,
+    'sameAs': [
+      'https://youtube.com/@natanyume',
+      'https://www.tiktok.com/@natan.kimito',
+      'https://x.com/natanohj_9',
+      'https://www.instagram.com/natansolano_',
+      'https://github.com/Natanmiuz'
+    ],
+    'jobTitle': 'Content Creator and Programmer',
+    'description': 'Content creator and programmer sharing passion for technology, gaming, and creative content.',
+    'knowsAbout': ['Programming', 'Content Creation', 'Gaming', 'Technology'],
+    'email': 'contact@natandev.com'
+  })}></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>

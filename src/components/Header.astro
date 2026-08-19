@@ -49,6 +49,6 @@ const { t, locale } = Astro.props;
   const switcher = document.getElementById('language-switcher');
   switcher?.addEventListener('change', (e) => {
     const value = e.target.value;
-    location.href = value === 'en' ? '/' : '/' + value + '/';
+    location.href = import.meta.env.BASE_URL + (value === 'en' ? '' : value + '/');
   });
 </script>
