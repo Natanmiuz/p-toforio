@@ -20,9 +20,24 @@ const { t } = Astro.props;
       <div class="simple-projects" data-aos="fade-up">
         <h3>{t['programmer.projects.title']}</h3>
         <ul class="projects-list">
-          <li><span class="project-title">image-resizer</span> - <span>{t['programmer.projects.imageResizer']}</span></li>
-          <li><span class="project-title">AudioConvert</span> - <span>{t['programmer.projects.audioConvert']}</span></li>
-          <li><span class="project-title">VideoConvert</span> - <span>{t['programmer.projects.videoConvert']}</span></li>
+          <li>
+            <a href="https://olaolapasapasa.vercel.app/" class="project-title" target="_blank" rel="noopener">
+              olaolapasapasa <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            - <span>{t['programmer.projects.olaolapasapasa']}</span>
+          </li>
+          <li>
+            <a href="https://github.com/Natanmiuz/mp3-mp4-downloader/releases/tag/v.20" class="project-title" target="_blank" rel="noopener">
+              Notnet <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            - <span>{t['programmer.projects.notnet']}</span>
+          </li>
+          <li>
+            <a href="https://github.com/Natanmiuz/VideoConvert" class="project-title" target="_blank" rel="noopener">
+              VideoConvert <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            - <span>{t['programmer.projects.videoConvert']}</span>
+          </li>
         </ul>
       </div>
 
