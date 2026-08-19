@@ -530,6 +530,18 @@
     .project-title {
       font-weight: 600;
       color: var(--pink);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .project-title i {
+      font-size: 0.85rem;
+      margin-left: 4px;
+    }
+
+    .project-title:hover {
+      color: var(--blue);
+      text-decoration: underline;
     }
 
     .github-section {
