@@ -10,51 +10,42 @@ const year = new Date().getFullYear();
 ---
 <footer class="footer" role="contentinfo">
   <div class="container">
-    <div class="footer-container">
-      <div class="footer-about">
-        <h4 class="footer-title">{t['footer.about']}</h4>
-        <p>{t['footer.aboutText']}</p>
-      </div>
-      <div class="footer-links">
-        <h4 class="footer-title">{t['footer.quickLinks']}</h4>
-        <ul>
-          <li><a href="#hero"><i class="fas fa-chevron-right"></i> <span>{t['nav.home']}</span></a></li>
-          <li><a href="#content-creator"><i class="fas fa-chevron-right"></i> <span>{t['nav.contentCreator']}</span></a></li>
-          <li><a href="#programmer"><i class="fas fa-chevron-right"></i> <span>{t['nav.programmer']}</span></a></li>
-          <li><a href="#contact"><i class="fas fa-chevron-right"></i> <span>{t['nav.contact']}</span></a></li>
-        </ul>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-wordmark" translate="no">Natanohj<span>.</span></p>
+
+        <nav aria-label={t['footer.quickLinks']}>
+          <ul class="footer-menu">
+            <li><a href="#hero">{t['nav.home']}</a></li>
+            <li><a href="#content-creator">{t['nav.contentCreator']}</a></li>
+            <li><a href="#programmer">{t['nav.programmer']}</a></li>
+            <li><a href="#contact">{t['nav.contact']}</a></li>
+            <li><a href="https://youtube.com/@natanyume" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://github.com/Natanmiuz" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </nav>
       </div>
 
-      <div class="footer-social">
-        <h4 class="footer-title">{t['footer.followMe']}</h4>
-        <div class="footer-social-icons">
-          <a href="https://www.tiktok.com/@natan.kimito" class="footer-social-link tiktok" aria-label="TikTok">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a href="https://youtube.com/@natanyume" class="footer-social-link youtube" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a class="footer-social-link facebook disabled" aria-disabled="true" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://x.com/natanohj_9" class="footer-social-link twitter" aria-label="Twitter/X">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://www.instagram.com/natansolano_" class="footer-social-link instagram" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a class="footer-social-link twitch disabled" aria-disabled="true" aria-label="Twitch">
-            <i class="fab fa-twitch"></i>
-          </a>
-          <a class="footer-social-link kick disabled" aria-disabled="true" aria-label="Kick">
-            <i class="fas fa-gamepad"></i>
-          </a>
+      <div class="footer-blocks">
+        <div>
+          <h2 class="footer-title">{t['footer.about']}</h2>
+          <p>{t['footer.aboutText']}</p>
+        </div>
+        <div>
+          <h2 class="footer-title">{t['footer.followMe']}</h2>
+          <ul class="footer-social">
+            <li><a href="https://www.tiktok.com/@natan.kimito" class="footer-social-link tiktok" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://youtube.com/@natanyume" class="footer-social-link youtube" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61593569911560" class="footer-social-link facebook" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://x.com/natanohj_9" class="footer-social-link twitter" target="_blank" rel="noopener">Twitter/X</a></li>
+            <li><a href="https://www.instagram.com/natansolano_" class="footer-social-link instagram" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a class="footer-social-link twitch disabled" aria-disabled="true">Twitch</a></li>
+            <li><a class="footer-social-link kick disabled" aria-disabled="true">Kick</a></li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; {year} <span>{t['footer.copyright']}</span></p>
-    </div>
+    <p class="footer-bottom">&copy; {year} {t['footer.copyright']}</p>
   </div>
 </footer>

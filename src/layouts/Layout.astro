@@ -9,8 +9,10 @@ interface Props {
 }
 
 const { locale, t } = Astro.props;
-const BASE = 'https://Natanmiuz.github.io/p-toforio';
+// Built from `site` + `base` in astro.config.mjs so the two never drift apart.
+const BASE = new URL(import.meta.env.BASE_URL, Astro.site).href.replace(/\/$/, '');
 const paths: Record<string, string> = { en: '/', es: '/es/', ja: '/ja/' };
+const ogImage = BASE + '/assets/images/og-image.jpg';
 const canonical = BASE + (paths[locale] ?? '/');
 const ogLocales: Record<string, string> = { en: 'en_US', es: 'es_ES', ja: 'ja_JP' };
 const hreflangs = [
@@ -29,7 +31,6 @@ const hreflangs = [
   <!-- SEO Meta Tags -->
   <title>{t['seo.title']}</title>
   <meta name="description" content={t['seo.description']}>
-  <meta name="keywords" content="content creator, programmer, gaming content, tech tutorials, coding projects, YouTube creator, streaming">
   <meta name="author" content="Natan">
   <meta name="robots" content="index, follow">
 
@@ -39,7 +40,13 @@ const hreflangs = [
   <meta property="og:description" content={t['seo.ogDescription']}>
   <meta property="og:url" content={canonical}>
   <meta property="og:locale" content={ogLocales[locale] ?? 'en_US'}>
-  <meta property="og:image" content={BASE + '/assets/images/og-image.jpg'}>
+  {Object.entries(ogLocales).filter(([code]) => code !== locale).map(([, og]) => (
+    <meta property="og:locale:alternate" content={og} />
+  ))}
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={t['seo.ogTitle']}>
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -72,26 +79,32 @@ const hreflangs = [
     '@context': 'https://schema.org',
     '@type': 'Person',
     'name': 'Natanohj',
-    'url': BASE,
+    'url': BASE + '/',
     'sameAs': [
       'https://youtube.com/@natanyume',
       'https://www.tiktok.com/@natan.kimito',
       'https://x.com/natanohj_9',
       'https://www.instagram.com/natansolano_',
+      'https://www.facebook.com/profile.php?id=61593569911560',
       'https://github.com/Natanmiuz'
     ],
+    'image': ogImage,
     'jobTitle': 'Content Creator and Programmer',
     'description': 'Content creator and programmer sharing passion for technology, gaming, and creative content.',
-    'knowsAbout': ['Programming', 'Content Creation', 'Gaming', 'Technology'],
-    'email': 'contact@natandev.com'
+    'knowsAbout': ['Programming', 'Content Creation', 'Gaming', 'Technology']
   })}></script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <script is:inline>
+    // Apply the saved theme before first paint so dark mode does not flash white.
+    try { if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode'); } catch (e) {}
+  </script>
+  <a href="#main-content" class="skip-link">{t['a11y.skip']}</a>
   <slot />
   <script is:inline src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="../scripts/aos-init.js"></script>
   <script src="../scripts/nav.js"></script>
   <script src="../scripts/theme.js"></script>
+  <script src="../scripts/oshi.js"></script>
 </body>
 </html>

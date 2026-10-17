@@ -6,21 +6,74 @@ interface Props {
 }
 
 const { t } = Astro.props;
+
+// μ's in official member order; "mus" lights all nine and keeps the default pastels.
+const members = ['honoka', 'eli', 'kotori', 'umi', 'rin', 'maki', 'nozomi', 'hanayo', 'nico'] as const;
+const picker = ['mus', ...members] as const;
 ---
-<section class="hero" id="hero" aria-label="Hero section">
+<section class="hero" id="hero">
   <div class="shapes" aria-hidden="true">
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
     <div class="shape shape-3"></div>
   </div>
+  <svg class="visually-hidden" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="pl" viewBox="0 0 8 22">
+        <g style="opacity: var(--tube-o, 1)">
+          <rect x="3" y="0" width="2" height="1" style="fill: var(--c)" />
+          <rect x="2" y="1" width="4" height="13" style="fill: var(--c)" />
+          <rect x="3" y="2" width="1" height="10" fill="#fff" fill-opacity=".55" />
+        </g>
+        <rect x="1" y="14" width="6" height="1" style="fill: var(--handle)" />
+        <rect x="2" y="15" width="4" height="7" style="fill: var(--handle)" />
+        <rect x="3" y="17" width="2" height="2" style="fill: var(--c)" />
+      </symbol>
+      <symbol id="pl-mus" viewBox="0 0 8 22">
+        <g style="opacity: var(--tube-o, 1)">
+          <rect x="3" y="0" width="2" height="1" style="fill: var(--m-mus)" />
+          {members.map((m, i) => (
+            <rect x="2" y={1 + i} width="4" height="1" style={`fill: var(--m-${m})`} />
+          ))}
+          <rect x="2" y="10" width="4" height="4" style="fill: var(--m-mus)" />
+          <rect x="3" y="2" width="1" height="10" fill="#fff" fill-opacity=".4" />
+        </g>
+        <rect x="1" y="14" width="6" height="1" style="fill: var(--handle)" />
+        <rect x="2" y="15" width="4" height="7" style="fill: var(--handle)" />
+        <rect x="3" y="17" width="2" height="2" style="fill: var(--m-mus)" />
+      </symbol>
+    </defs>
+  </svg>
   <div class="container">
     <div class="hero-content">
-      <h1 data-aos="fade-up">{t['home.title']}</h1>
+      <h1>{t['home.title']}</h1>
       <p data-aos="fade-up" data-aos-delay="200">{t['home.subtitle']}</p>
       <div class="hero-buttons">
         <a href="#content-creator" class="btn btn-primary" data-aos="fade-up" data-aos-delay="400">{t['nav.contentCreator']}</a>
         <a href="#programmer" class="btn btn-secondary" data-aos="fade-up" data-aos-delay="600">{t['nav.programmer']}</a>
       </div>
+
+      <fieldset class="oshi" id="oshi-picker">
+        <legend class="visually-hidden">{t['oshi.legend']}</legend>
+        <div class="oshi-row">
+          {picker.map((id) => (
+            <label class="penlight" style={id === 'mus' ? undefined : `--c: var(--m-${id})`}>
+              <input type="radio" name="oshi" id={`oshi-${id}`} value={id} checked={id === 'mus'} />
+              <svg aria-hidden="true" focusable="false"><use href={id === 'mus' ? '#pl-mus' : '#pl'} /></svg>
+              <span class="visually-hidden">{t[`oshi.${id}`]}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <script is:inline>
+        (function () {
+          try {
+            var saved = localStorage.getItem('oshi');
+            var input = saved && document.getElementById('oshi-' + saved);
+            if (input) input.checked = true;
+          } catch (e) {}
+        })();
+      </script>
     </div>
   </div>
 </section>

@@ -3,14 +3,16 @@ const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
 hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-  hamburger.classList.toggle('active');
+  const open = navMenu.classList.toggle('active');
+  hamburger.classList.toggle('active', open);
+  hamburger.setAttribute('aria-expanded', String(open));
 });
 
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('active');
     hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
   });
 });
 
@@ -29,7 +31,6 @@ window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
     if (window.scrollY >= (sectionTop - 150)) {
       current = section.getAttribute('id');
     }
