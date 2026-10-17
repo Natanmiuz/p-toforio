@@ -1,5 +1,7 @@
 ---
 import type { Translation } from '../i18n';
+import { projects } from '../data/projects';
+import { github } from '../data/social';
 
 interface Props {
   t: Translation;
@@ -20,30 +22,20 @@ const { t } = Astro.props;
       <div class="simple-projects" data-aos="fade-up">
         <h3>{t['programmer.projects.title']}</h3>
         <ul class="projects-list">
-          <li>
-            <a href="https://olaolapasapasa.vercel.app/" class="project-title" target="_blank" rel="noopener">
-              olaolapasapasa <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-            - <span>{t['programmer.projects.olaolapasapasa']}</span>
-          </li>
-          <li>
-            <a href="https://github.com/Natanmiuz/mp3-mp4-downloader/releases/tag/v.20" class="project-title" target="_blank" rel="noopener">
-              Notnet <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-            - <span>{t['programmer.projects.notnet']}</span>
-          </li>
-          <li>
-            <a href="https://github.com/Natanmiuz/VideoConvert" class="project-title" target="_blank" rel="noopener">
-              VideoConvert <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-            - <span>{t['programmer.projects.videoConvert']}</span>
-          </li>
+          {projects.map((project) => (
+            <li>
+              <a href={project.url} class="project-title" target="_blank" rel="noopener">
+                {project.name} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+              - <span>{t[project.descKey]}</span>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div class="github-section" data-aos="fade-up">
         <p>{t['programmer.github.message']}</p>
-        <a href="https://github.com/Natanmiuz" class="github-link" target="_blank" rel="noopener">
+        <a href={github} class="github-link" target="_blank" rel="noopener">
           <i class="fab fa-github"></i>
           <span>{t['programmer.github.profile']}</span>
         </a>

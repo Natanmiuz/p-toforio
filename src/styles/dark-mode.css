@@ -16,10 +16,9 @@ body.dark-mode .nav-menu .nav-link {
 }
 
 body.dark-mode p,
-body.dark-mode .footer-links ul li a,
+body.dark-mode .footer-blocks p,
 body.dark-mode .portfolio-content p,
 body.dark-mode .schedule-platform,
-body.dark-mode .footer-about p,
 body.dark-mode .contact-detail {
   color: var(--text-secondary);
 }
@@ -46,7 +45,7 @@ body.dark-mode .form-control {
 
 body.dark-mode .form-control:focus {
   border-color: var(--pink);
-  box-shadow: 0 0 0 3px rgba(248, 178, 205, 0.1);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pink) 10%, transparent);
 }
 
 body.dark-mode .form-control::placeholder {
@@ -74,9 +73,32 @@ body.dark-mode .schedule-item {
   border-bottom-color: var(--border-dark);
 }
 
+body.dark-mode .footer-wordmark,
+body.dark-mode .footer-menu a,
 body.dark-mode .footer-social-link {
-  background-color: var(--card-dark);
   color: var(--text-dark);
+}
+
+/* At night the marker band would sit under light text on a dark ground, so it
+   becomes a thick underline and the text takes the accent instead. */
+body.dark-mode .footer-menu a,
+body.dark-mode .footer-social-link:not(.disabled) {
+  background: none;
+  text-decoration: underline transparent;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+body.dark-mode .footer-menu a:hover,
+body.dark-mode .footer-menu a:focus-visible,
+body.dark-mode .footer-social-link:not(.disabled):hover,
+body.dark-mode .footer-social-link:focus-visible {
+  color: var(--accent);
+  text-decoration-color: var(--pink);
+}
+
+body.dark-mode .footer-bottom {
+  border-top-color: var(--border-dark);
 }
 
 body.dark-mode .portfolio-item:hover {
