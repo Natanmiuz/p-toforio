@@ -1,5 +1,6 @@
 ---
 import type { Translation } from '../i18n';
+import { social, youtube, github } from '../data/social';
 
 interface Props {
   t: Translation;
@@ -20,8 +21,8 @@ const year = new Date().getFullYear();
             <li><a href="#content-creator">{t['nav.contentCreator']}</a></li>
             <li><a href="#programmer">{t['nav.programmer']}</a></li>
             <li><a href="#contact">{t['nav.contact']}</a></li>
-            <li><a href="https://youtube.com/@natanyume" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="https://github.com/Natanmiuz" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href={youtube.url} target="_blank" rel="noopener">{youtube.name}</a></li>
+            <li><a href={github} target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </nav>
       </div>
@@ -34,13 +35,13 @@ const year = new Date().getFullYear();
         <div>
           <h2 class="footer-title">{t['footer.followMe']}</h2>
           <ul class="footer-social">
-            <li><a href="https://www.tiktok.com/@natan.kimito" class="footer-social-link tiktok" target="_blank" rel="noopener">TikTok</a></li>
-            <li><a href="https://youtube.com/@natanyume" class="footer-social-link youtube" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="https://www.facebook.com/profile.php?id=61593569911560" class="footer-social-link facebook" target="_blank" rel="noopener">Facebook</a></li>
-            <li><a href="https://x.com/natanohj_9" class="footer-social-link twitter" target="_blank" rel="noopener">Twitter/X</a></li>
-            <li><a href="https://www.instagram.com/natansolano_" class="footer-social-link instagram" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a class="footer-social-link twitch disabled" aria-disabled="true">Twitch</a></li>
-            <li><a class="footer-social-link kick disabled" aria-disabled="true">Kick</a></li>
+            {social.map((link) => (
+              <li>
+                {link.url
+                  ? <a href={link.url} class={`footer-social-link ${link.id}`} target="_blank" rel="noopener">{link.name}</a>
+                  : <a class={`footer-social-link ${link.id} disabled`} aria-disabled="true">{link.name}</a>}
+              </li>
+            ))}
           </ul>
         </div>
       </div>

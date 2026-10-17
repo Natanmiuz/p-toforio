@@ -1,9 +1,9 @@
 ---
-import type { Translation } from '../i18n';
+import { localeInfo, localePath, type Locale, type Translation } from '../i18n';
 
 interface Props {
   t: Translation;
-  locale: string;
+  locale: Locale;
 }
 
 const { t, locale } = Astro.props;
@@ -27,9 +27,9 @@ const { t, locale } = Astro.props;
       <div class="nav-right">
         <div class="nav-controls">
           <select id="language-switcher" aria-label={t['a11y.language']}>
-            <option value="en" lang="en" selected={locale === 'en'}>{t['languages.english']}</option>
-            <option value="ja" lang="ja" selected={locale === 'ja'}>{t['languages.japanese']}</option>
-            <option value="es" lang="es" selected={locale === 'es'}>{t['languages.spanish']}</option>
+            {localeInfo.map(({ code, name }) => (
+              <option value={code} lang={code} selected={code === locale} data-href={import.meta.env.BASE_URL + localePath(code)}>{name}</option>
+            ))}
           </select>
           <button type="button" id="theme-toggle" aria-label={t['a11y.toggleTheme']}>
             <i class="fas fa-moon" aria-hidden="true"></i>
@@ -48,7 +48,7 @@ const { t, locale } = Astro.props;
 <script>
   const switcher = document.getElementById('language-switcher') as HTMLSelectElement | null;
   switcher?.addEventListener('change', () => {
-    const value = switcher.value;
-    location.href = import.meta.env.BASE_URL + (value === 'en' ? '' : value + '/');
+    const href = switcher.selectedOptions[0]?.dataset.href;
+    if (href) location.href = href;
   });
 </script>

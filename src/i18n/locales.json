@@ -1,0 +1,8 @@
+{
+  "default": "en",
+  "locales": [
+    { "code": "en", "name": "English", "og": "en_US" },
+    { "code": "es", "name": "Español", "og": "es_ES" },
+    { "code": "ja", "name": "日本語", "og": "ja_JP" }
+  ]
+}

@@ -1,6 +1,7 @@
 ---
 import type { Translation } from '../i18n';
 import { getLatestVideo } from '../lib/youtube';
+import { social, youtube } from '../data/social';
 
 interface Props {
   t: Translation;
@@ -42,41 +43,24 @@ const embedUrl = `https://www.youtube.com/embed/${video.id}`;
         <a class="btn btn-primary" href={watchUrl} target="_blank" rel="noopener" data-play>
           <i class="fas fa-play" aria-hidden="true"></i> {t['content.play']}
         </a>
-        <a class="btn btn-secondary" href="https://youtube.com/@natanyume/videos" target="_blank" rel="noopener">
+        <a class="btn btn-secondary" href={`${youtube.url}/videos`} target="_blank" rel="noopener">
           {t['content.latestVideos']} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
         </a>
       </div>
     </div>
 
     <div class="social-links" data-aos="fade-up">
-      <a href="https://www.tiktok.com/@natan.kimito" class="social-link tiktok" target="_blank" rel="noopener">
-        <i class="fab fa-tiktok"></i>
-        <span>TikTok</span>
-      </a>
-      <a href="https://youtube.com/@natanyume" class="social-link youtube" target="_blank" rel="noopener">
-        <i class="fab fa-youtube"></i>
-        <span>YouTube</span>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61593569911560" class="social-link facebook" target="_blank"  rel="noopener">
-        <i class="fab fa-facebook-f"></i>
-        <span>Facebook</span>
-      </a>
-      <a href="https://x.com/natanohj_9" class="social-link twitter" target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
-        <span>Twitter/X</span>
-      </a>
-      <a href="https://www.instagram.com/natansolano_" class="social-link instagram" target="_blank" rel="noopener">
-        <i class="fab fa-instagram"></i>
-        <span>Instagram</span>
-      </a>
-      <a class="social-link twitch disabled" aria-disabled="true" rel="noopener">
-        <i class="fab fa-twitch"></i>
-        <span>Twitch</span>
-      </a>
-      <a class="social-link kick disabled" aria-disabled="true" rel="noopener">
-        <i class="fas fa-gamepad"></i>
-        <span>Kick</span>
-      </a>
+      {social.map((link) => link.url ? (
+        <a href={link.url} class={`social-link ${link.id}`} target="_blank" rel="noopener">
+          <i class={link.icon} aria-hidden="true"></i>
+          <span>{link.name}</span>
+        </a>
+      ) : (
+        <a class={`social-link ${link.id} disabled`} aria-disabled="true">
+          <i class={link.icon} aria-hidden="true"></i>
+          <span>{link.name}</span>
+        </a>
+      ))}
     </div>
   </div>
 </section>
