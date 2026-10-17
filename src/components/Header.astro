@@ -1,18 +1,18 @@
 ---
-import type { Translation } from '../i18n';
+import { localeInfo, localePath, type Locale, type Translation } from '../i18n';
 
 interface Props {
   t: Translation;
-  locale: string;
+  locale: Locale;
 }
 
 const { t, locale } = Astro.props;
 ---
 <header>
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
+  <nav class="navbar" aria-label={t['a11y.mainNav']}>
     <div class="container">
       <div class="nav-left">
-        <a href="#hero" class="logo" aria-label="Natanohj homepage">Natanohj<span>.</span></a>
+        <a href="#hero" class="logo" aria-label={t['a11y.homeLink']}>Natanohj<span>.</span></a>
       </div>
 
       <div class="nav-center">
@@ -26,16 +26,16 @@ const { t, locale } = Astro.props;
 
       <div class="nav-right">
         <div class="nav-controls">
-          <select id="language-switcher">
-            <option value="en" selected={locale === 'en'}>{t['languages.english']}</option>
-            <option value="ja" selected={locale === 'ja'}>{t['languages.japanese']}</option>
-            <option value="es" selected={locale === 'es'}>{t['languages.spanish']}</option>
+          <select id="language-switcher" aria-label={t['a11y.language']}>
+            {localeInfo.map(({ code, name }) => (
+              <option value={code} lang={code} selected={code === locale} data-href={import.meta.env.BASE_URL + localePath(code)}>{name}</option>
+            ))}
           </select>
-          <button id="theme-toggle" aria-label="Toggle Dark Mode">
-            <i class="fas fa-moon"></i>
+          <button type="button" id="theme-toggle" aria-label={t['a11y.toggleTheme']}>
+            <i class="fas fa-moon" aria-hidden="true"></i>
           </button>
         </div>
-        <button class="hamburger" id="hamburger">
+        <button type="button" class="hamburger" id="hamburger" aria-label={t['a11y.menu']} aria-controls="nav-menu" aria-expanded="false">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -46,9 +46,9 @@ const { t, locale } = Astro.props;
 </header>
 
 <script>
-  const switcher = document.getElementById('language-switcher');
-  switcher?.addEventListener('change', (e) => {
-    const value = e.target.value;
-    location.href = import.meta.env.BASE_URL + (value === 'en' ? '' : value + '/');
+  const switcher = document.getElementById('language-switcher') as HTMLSelectElement | null;
+  switcher?.addEventListener('change', () => {
+    const href = switcher.selectedOptions[0]?.dataset.href;
+    if (href) location.href = href;
   });
 </script>

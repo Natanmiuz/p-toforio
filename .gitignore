@@ -9,3 +9,7 @@ docs/
 AGENTS.md
 .agents/
 skills-lock.json
+
+# Restos de herramientas de diseño (ramas descartadas)
+.impeccable/
+.taste-skill/
